@@ -29,7 +29,15 @@ public class Genetic_alg extends AppCompatActivity {
                 for (int i = 0; i < strCoef.length; i++) {
                     x[i] = Integer.parseInt(strCoef[i]);
                 }
-                int[] roots = genetic(x, y, n);
+
+                int[] roots = new int[0];
+                try {
+                    roots = genetic(x, y, n);
+                } catch (TimeoutException e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(),Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 String res = "Цілі корені:";
                 for (int i = 0; i < roots.length; i++) {
                     res += roots[i] + ", ";
@@ -59,7 +67,10 @@ public class Genetic_alg extends AppCompatActivity {
         ;
     }
 
-    public static int[] genetic(int[] x, int y, int n) {
+    public static int[] genetic(int[] x, int y, int n) throws TimeoutException {
+        long startTime = System.currentTimeMillis();
+        long timeOut = 1000L;
+
         Random r = new Random();
         int[][] roots = new int[n][x.length];
 
@@ -115,6 +126,9 @@ public class Genetic_alg extends AppCompatActivity {
                         return child[1];
                     }
                 }
+            }
+            if (System.currentTimeMillis() - startTime > timeOut) {
+                throw new TimeoutException("TimeOut " + timeOut + "ms reaced! Aborted!");
             }
         }
     }
