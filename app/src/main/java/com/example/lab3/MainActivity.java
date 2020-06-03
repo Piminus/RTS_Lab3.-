@@ -23,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(MainActivity.this, Factorization.class);
                     startActivity(intent);
+                    Context context = getApplicationContext();
+                    String msg = "Error"; 
+                    int duration = 1000;
+                    Toast.makeText(context, msg, duration).show();
                     finish();
                 } catch (Exception e){} ;
             }
@@ -33,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(MainActivity.this, Parceptron.class);
                     startActivity(intent);
+                    Context context = getApplicationContext();
+                    String msg = "Error"; 
+                    int duration = 1000;
+                    Toast.makeText(context, msg, duration).show();
                     finish();
                 } catch (Exception e) {};
             }
@@ -43,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(MainActivity.this, Genetic_alg.class);
                     startActivity(intent);
+                    Context context = getApplicationContext();
+                    String msg = "Error"; 
+                    int duration = 1000;
+                    Toast.makeText(context, msg, duration).show();
                     finish();
                 } catch (Exception e) {};
             }
